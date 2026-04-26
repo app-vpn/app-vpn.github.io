@@ -270,19 +270,9 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何管理用户流量配额？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的 gRPC 模式适合哪些场景？</h5></div>
     <div class="panel-body">
-        管理员可以为每个用户设置上传和下载带宽以及总流量上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，提高整体网络公平性和用户体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在 Nginx 上为 Vmess/WS 配置反向代理与 TLS？</h5></div>
-    <div class="panel-body">
-        在 Nginx 中配置 HTTPS 站点并将特定路径（如 /ray）反向代理到 V2Ray 的 WebSocket 端口，确保 proxy_set_header 设置正确（Host、X-Real-IP 等）。同时使用 certbot 获取并自动续期 TLS 证书以维护安全。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何用 iptables 限制 V2Ray 服务的访问来源？</h5></div>
-    <div class="panel-body">
-        使用 iptables 规则仅允许可信 IP 或 CDN 的中转 IP 访问服务端口，例如 `iptables -A INPUT -p tcp -s <trusted_ip> --dport 443 -j ACCEPT`，并在默认策略下拒绝其他来源，从而降低被扫描与滥用风险。<hr />    </div>
+        gRPC 支持多路复用和长连接，适合高并发访问和移动网络场景。相比 TCP 或 WebSocket，它可以减少握手次数，降低延迟，同时提高连接稳定性和吞吐量，特别适合游戏或即时通讯。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash for Android 如何导入订阅并自动更新？</h5></div>
@@ -290,14 +280,9 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
         在 Clash for Android 的配置界面中选择“配置文件”→“新建配置”，粘贴订阅链接即可。启用自动更新功能后，软件会定期检查订阅源是否有新节点，并在后台自动替换旧配置，保持节点最新状态。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的伪装域名为什么重要？</h5></div>
+    <div class="panel-heading"><h5>如何用 iptables 限制 V2Ray 服务的访问来源？</h5></div>
     <div class="panel-body">
-        伪装域名必须真实可访问且证书有效，以使流量看起来像普通 HTTPS 请求。正确配置可以降低被封锁和 DPI 检测风险，提高节点安全性和长期可用性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + Reality 模式如何隐藏流量特征？</h5></div>
-    <div class="panel-body">
-        Reality 模式通过伪装握手和真实网站特征，使流量难以被 DPI 检测。结合策略组使用，可有效隐藏节点通信特征，同时保持安全和高速传输，适合高封锁环境。<hr />    </div>
+        使用 iptables 规则仅允许可信 IP 或 CDN 的中转 IP 访问服务端口，例如 `iptables -A INPUT -p tcp -s <trusted_ip> --dport 443 -j ACCEPT`，并在默认策略下拒绝其他来源，从而降低被扫描与滥用风险。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 使用 mKCP 有哪些适合场景？</h5></div>
@@ -305,9 +290,24 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
         mKCP 是基于 UDP 的传输协议，适合高丢包或不稳定网络环境。结合策略组使用，可优化网页浏览、视频播放和游戏体验，减少延迟和掉线，提高连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 gRPC 模式适合哪些场景？</h5></div>
+    <div class="panel-heading"><h5>如何在 Nginx 上为 Vmess/WS 配置反向代理与 TLS？</h5></div>
     <div class="panel-body">
-        gRPC 支持多路复用和长连接，适合高并发访问和移动网络场景。相比 TCP 或 WebSocket，它可以减少握手次数，降低延迟，同时提高连接稳定性和吞吐量，特别适合游戏或即时通讯。<hr />    </div>
+        在 Nginx 中配置 HTTPS 站点并将特定路径（如 /ray）反向代理到 V2Ray 的 WebSocket 端口，确保 proxy_set_header 设置正确（Host、X-Real-IP 等）。同时使用 certbot 获取并自动续期 TLS 证书以维护安全。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 的伪装域名为什么重要？</h5></div>
+    <div class="panel-body">
+        伪装域名必须真实可访问且证书有效，以使流量看起来像普通 HTTPS 请求。正确配置可以降低被封锁和 DPI 检测风险，提高节点安全性和长期可用性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何管理用户流量配额？</h5></div>
+    <div class="panel-body">
+        管理员可以为每个用户设置上传和下载带宽以及总流量上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，提高整体网络公平性和用户体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Matsuri 节点延迟排序功能如何使用？</h5></div>
+    <div class="panel-body">
+        Matsuri 会定期测速节点延迟，并根据结果排序。用户可选择延迟最低的节点进行访问，结合策略组实现自动切换，提高网络速度和连接稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 的规则订阅更新频率如何设置？</h5></div>
@@ -315,9 +315,9 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
         Clash 支持设置订阅规则的更新频率，例如每小时或每天。定期更新可保证节点和规则最新，减少手动维护，提高访问速度和分流效率，同时保持网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Matsuri 节点延迟排序功能如何使用？</h5></div>
+    <div class="panel-heading"><h5>VLESS + Reality 模式如何隐藏流量特征？</h5></div>
     <div class="panel-body">
-        Matsuri 会定期测速节点延迟，并根据结果排序。用户可选择延迟最低的节点进行访问，结合策略组实现自动切换，提高网络速度和连接稳定性。    </div>
+        Reality 模式通过伪装握手和真实网站特征，使流量难以被 DPI 检测。结合策略组使用，可有效隐藏节点通信特征，同时保持安全和高速传输，适合高封锁环境。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -346,16 +346,16 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-3-17-vpn-proxy.htm" title="APP VPN节点 | 3月17日20.2M/S|免费Trojan节点/SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月17日20.2M/S|免费Trojan节点/SSR节点/Singbox节点/V2ray节点/Clash节点/Shadowrocket节点节点推荐，在线Clash机场梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-12-vpn-proxy.htm" title="APP VPN节点 | 4月12日21.6M/S|免费Clash节点/Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/V2ray节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 4月12日21.6M/S|免费Clash节点/Shadowrocket节点/SSR节点/Singbox节点/Trojan节点/V2ray节点节点推荐，在线Clash机场梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-9-node-share-links.htm" title="APP VPN节点 | 4月9日19M/S|免费Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 4月9日19M/S|免费Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点节点推荐，在线Clash机场梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-10-share-vpn.htm" title="APP VPN节点 | 3月10日19.3M/S|免费V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/Trojan节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月10日19.3M/S|免费V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/Trojan节点节点推荐，在线Clash机场梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-28-mianfei-vpn.htm" title="APP VPN节点 | 3月28日21.6M/S|免费SSR节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点/Trojan节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月28日21.6M/S|免费SSR节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点/Trojan节点节点推荐，在线Clash机场梯子购买推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-5-share-vpn.htm" title="APP VPN节点 | 3月5日22M/S|免费V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Trojan节点/Clash节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月5日22M/S|免费V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Trojan节点/Clash节点节点推荐，在线Clash机场梯子购买推荐</a></li>
                         <li class="py-2"><a href="/free-nodes/2026-3-15-free-vpn-node.htm" title="APP VPN节点 | 3月15日18.6M/S|免费V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点/Singbox节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月15日18.6M/S|免费V2ray节点/Shadowrocket节点/Trojan节点/SSR节点/Clash节点/Singbox节点节点推荐，在线Clash机场梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-13-node-share.htm" title="APP VPN节点 | 4月13日20.1M/S|免费Trojan节点/SSR节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 4月13日20.1M/S|免费Trojan节点/SSR节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点节点推荐，在线Clash机场梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-3-8-share-vpn.htm" title="APP VPN节点 | 3月8日22.4M/S|免费Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月8日22.4M/S|免费Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点/SSR节点节点推荐，在线Clash机场梯子购买推荐</a></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-18-node-share.htm" title="APP VPN节点 | 4月18日20.6M/S|免费Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/Trojan节点/SSR节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 4月18日20.6M/S|免费Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/Trojan节点/SSR节点节点推荐，在线Clash机场梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-11-free-vpn.htm" title="APP VPN节点 | 4月11日21.2M/S|免费Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/SSR节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 4月11日21.2M/S|免费Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/SSR节点节点推荐，在线Clash机场梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-22-top-vpn.htm" title="APP VPN节点 | 4月22日19.9M/S|免费Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Trojan节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 4月22日19.9M/S|免费Singbox节点/Shadowrocket节点/V2ray节点/SSR节点/Clash节点/Trojan节点节点推荐，在线Clash机场梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-2-vpn-github.htm" title="APP VPN节点 | 4月2日21.4M/S|免费Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/Trojan节点/SSR节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 4月2日21.4M/S|免费Shadowrocket节点/Clash节点/Singbox节点/V2ray节点/Trojan节点/SSR节点节点推荐，在线Clash机场梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-11-vpn-node.htm" title="APP VPN节点 | 3月11日21.1M/S|免费Clash节点/Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Singbox节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月11日21.1M/S|免费Clash节点/Shadowrocket节点/Trojan节点/V2ray节点/SSR节点/Singbox节点节点推荐，在线Clash机场梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-22-share-vpn.htm" title="APP VPN节点 | 3月22日22.4M/S|免费Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月22日22.4M/S|免费Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点节点推荐，在线Clash机场梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-4-10-vpn-github.htm" title="APP VPN节点 | 4月10日21M/S|免费Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/V2ray节点/SSR节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 4月10日21M/S|免费Singbox节点/Clash节点/Shadowrocket节点/Trojan节点/V2ray节点/SSR节点节点推荐，在线Clash机场梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-27-free-node-subscribe.htm" title="APP VPN节点 | 3月27日18.2M/S|免费V2ray节点/Trojan节点/Singbox节点/SSR节点/Clash节点/Shadowrocket节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月27日18.2M/S|免费V2ray节点/Trojan节点/Singbox节点/SSR节点/Clash节点/Shadowrocket节点节点推荐，在线Clash机场梯子购买推荐</a></li>
+                        <li class="py-2"><a href="/free-nodes/2026-3-10-share-vpn.htm" title="APP VPN节点 | 3月10日19.3M/S|免费V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/Trojan节点节点推荐，在线Clash机场梯子购买推荐">APP VPN节点 | 3月10日19.3M/S|免费V2ray节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点/Trojan节点节点推荐，在线Clash机场梯子购买推荐</a></li>
                     </ul>
     </div>
 </div>
@@ -367,7 +367,7 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-03/" title="2026-03 归档">2026-03</a></h4>
